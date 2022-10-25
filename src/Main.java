@@ -25,35 +25,23 @@ public class Main {
         Flower pion = new Flower("Пион","Англии", 69.9, 1);
         Flower gypsophila = new Flower("Гипсофила","Турция", 19.5, 10);
 
-        printFlower(rose);
-        printFlower(chrysanthemum);
-        printFlower(pion);
-        printFlower(gypsophila);
+        System.out.println(rose);
+        System.out.println(chrysanthemum);
+        System.out.println(pion);
+        System.out.println(gypsophila);
 
-        calculateFlower(
+        Bouqet bouqet = new Bouqet(
                 rose, rose, rose,
-                chrysanthemum, chrysanthemum, chrysanthemum, chrysanthemum, chrysanthemum,
+                chrysanthemum, chrysanthemum, chrysanthemum, chrysanthemum,chrysanthemum,
                 gypsophila
         );
+
+        System.out.println(
+                "Стоимость букета - " + bouqet.getCost() +
+                " руб. Срок стояния - "  + bouqet.getLifeSpan() + " дн.");
+
         System.out.println("----------------------------------------");
     }
 
-    private static void printFlower(Flower flower) {
-        System.out.printf("Цветок - %s. Страна происхождения - %s. Стоимость штуки - %.2f руб. Срок стояния - %d дн.\n",
-                flower.getFlowerColor(), flower.getCountry(), flower.getCost(), flower.getLifeSpan());
-    }
-    private static void calculateFlower(Flower... flowers) {
-        double total = 0;
-        int minLifeSpan = Integer.MAX_VALUE;
-
-        for (Flower flower : flowers) {
-            if (flower.lifeSpan < minLifeSpan) {
-                minLifeSpan = flower.lifeSpan;
-            }
-            total += flower.getCost();
-        }
-        total = total * 1.1;
-        System.out.printf("Стоимость букета - %.2f руб. Срок стояния букета - %d дн.\n", total, minLifeSpan);
-    }
 
 }
